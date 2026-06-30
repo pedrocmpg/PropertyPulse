@@ -1,0 +1,407 @@
+/**
+ * FII Dashboard Theme Configuration
+ * 
+ * This file defines all CSS custom properties (tokens) for the FII Dashboard theme.
+ * The theme is designed for dark mode as the default, with neon accents for positive
+ * indicators (discount) and warning colors for negative indicators (premium).
+ * 
+ * Validates Requirements: 11.1, 11.2, 11.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 6.11, 6.12
+ */
+
+:root {
+  /* ============================================================================
+     COLOR TOKENS - Dark Mode Theme with Neon Accents
+     ============================================================================ */
+
+  /* Background Colors */
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #1f2937;
+  --color-bg-tertiary: #374151;
+
+  /* Text Colors */
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-text-tertiary: #9ca3af;
+
+  /* P/VP Ratio Indicator Colors - Premium (Trading Above NAV) */
+  /* Status: P/VP > 1.0 means trading at premium (negative indicator - warning red) */
+  --color-premium-text: #FF006B;
+  --color-premium-bg: rgba(255, 0, 107, 0.1);
+  --color-premium-text-low-intensity: rgba(255, 0, 107, 0.4);
+  --color-premium-bg-low-intensity: rgba(255, 0, 107, 0.05);
+
+  /* P/VP Ratio Indicator Colors - Discount (Trading Below NAV) */
+  /* Status: P/VP < 1.0 means trading at discount (positive indicator - neon green) */
+  --color-discount-text: #00FF9F;
+  --color-discount-bg: rgba(0, 255, 159, 0.1);
+  --color-discount-text-low-intensity: rgba(0, 255, 159, 0.4);
+  --color-discount-bg-low-intensity: rgba(0, 255, 159, 0.05);
+
+  /* P/VP Ratio Indicator Colors - Neutral (Trading at NAV) */
+  /* Status: P/VP = 1.0 means neutral (no premium or discount) */
+  --color-neutral-text: #f9fafb;
+  --color-neutral-bg: transparent;
+  --color-neutral-bg-subtle: rgba(209, 213, 219, 0.05);
+
+  /* Border Colors */
+  --color-border-primary: #374151;
+  --color-border-secondary: #4b5563;
+
+  /* Success/Error Colors */
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  /* ============================================================================
+     SPACING TOKENS - Responsive Layout Scale (8px base unit)
+     ============================================================================ */
+
+  /* Base unit: 8px */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 2.5rem;   /* 40px */
+  --spacing-3xl: 3rem;     /* 48px */
+
+  /* Container Padding - Responsive */
+  --container-padding-mobile: var(--spacing-md);   /* 16px on mobile */
+  --container-padding-tablet: var(--spacing-lg);   /* 24px on tablet */
+  --container-padding-desktop: var(--spacing-xl);  /* 32px on desktop */
+
+  /* Gap between FII Cards - Responsive */
+  --card-gap-mobile: var(--spacing-md);    /* 16px on mobile */
+  --card-gap-tablet: var(--spacing-lg);    /* 24px on tablet */
+  --card-gap-desktop: var(--spacing-xl);   /* 32px on desktop */
+
+  /* Component Padding */
+  --card-padding-mobile: var(--spacing-md);      /* 16px on mobile */
+  --card-padding-tablet: var(--spacing-lg);      /* 24px on tablet */
+  --card-padding-desktop: var(--spacing-lg);     /* 24px on desktop */
+
+  /* Component Margins */
+  --header-margin-bottom: var(--spacing-xl);
+  --search-margin-bottom: var(--spacing-lg);
+  --section-margin-bottom: var(--spacing-2xl);
+
+  /* ============================================================================
+     TRANSITION TOKENS - Smooth Animations for Visual Feedback
+     ============================================================================ */
+
+  /* Fade-in transition for P/VP indicators (300ms) */
+  --transition-fade-in: opacity 300ms ease-out, transform 300ms ease-out;
+  --transition-fade-in-color: color 300ms ease-out, background-color 300ms ease-out;
+
+  /* Standard transitions for general UI elements */
+  --transition-duration-short: 150ms;
+  --transition-duration-standard: 300ms;
+  --transition-duration-long: 500ms;
+
+  --transition-easing-ease-out: ease-out;
+  --transition-easing-ease-in-out: ease-in-out;
+
+  /* Combined transition properties */
+  --transition-standard: all var(--transition-duration-standard) var(--transition-easing-ease-out);
+  --transition-short: all var(--transition-duration-short) var(--transition-easing-ease-out);
+
+  /* ============================================================================
+     TYPOGRAPHY TOKENS
+     ============================================================================ */
+
+  --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* ============================================================================
+     SHADOW TOKENS - Depth and Elevation
+     ============================================================================ */
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* ============================================================================
+     BORDER RADIUS TOKENS
+     ============================================================================ */
+
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+
+  /* ============================================================================
+     Z-INDEX TOKENS - Stacking Context
+     ============================================================================ */
+
+  --z-index-base: 0;
+  --z-index-dropdown: 10;
+  --z-index-sticky: 20;
+  --z-index-fixed: 30;
+  --z-index-modal-backdrop: 40;
+  --z-index-modal: 50;
+  --z-index-toast: 60;
+}
+
+/* ============================================================================
+   LIGHT MODE OVERRIDE (if implemented in future)
+   ============================================================================ */
+
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Can be extended later if light mode is needed */
+  }
+}
+
+/* ============================================================================
+   UTILITY CLASSES - Common component patterns using theme tokens
+   ============================================================================ */
+
+/* FII Card - Base styling with fade-in animation and theme colors */
+.fii-card {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--card-padding-mobile);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-standard);
+  animation: fadeIn var(--transition-duration-standard) var(--transition-easing-ease-out);
+}
+
+@media (min-width: 768px) {
+  .fii-card {
+    padding: var(--card-padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .fii-card {
+    padding: var(--card-padding-desktop);
+  }
+}
+
+/* FII Card Hover State - Slight elevation and color shift */
+.fii-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-secondary);
+  transform: translateY(-2px);
+}
+
+/* P/VP Ratio Indicator - Premium (High Intensity) */
+.pvp-indicator.premium.high-intensity {
+  color: var(--color-premium-text);
+  background-color: var(--color-premium-bg);
+  transition: var(--transition-fade-in-color);
+}
+
+/* P/VP Ratio Indicator - Premium (Low Intensity) */
+.pvp-indicator.premium.low-intensity {
+  color: var(--color-premium-text-low-intensity);
+  background-color: var(--color-premium-bg-low-intensity);
+  transition: var(--transition-fade-in-color);
+}
+
+/* P/VP Ratio Indicator - Discount (High Intensity) */
+.pvp-indicator.discount.high-intensity {
+  color: var(--color-discount-text);
+  background-color: var(--color-discount-bg);
+  transition: var(--transition-fade-in-color);
+}
+
+/* P/VP Ratio Indicator - Discount (Low Intensity) */
+.pvp-indicator.discount.low-intensity {
+  color: var(--color-discount-text-low-intensity);
+  background-color: var(--color-discount-bg-low-intensity);
+  transition: var(--transition-fade-in-color);
+}
+
+/* P/VP Ratio Indicator - Neutral */
+.pvp-indicator.neutral {
+  color: var(--color-neutral-text);
+  background-color: var(--color-neutral-bg);
+  transition: var(--transition-fade-in-color);
+}
+
+/* Badge styling for P/VP indicators */
+.pvp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--transition-fade-in);
+}
+
+/* Fade-in animation for indicators (300ms as per requirement) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container padding helper classes - Responsive */
+.container-x-padding {
+  padding-left: var(--container-padding-mobile);
+  padding-right: var(--container-padding-mobile);
+}
+
+@media (min-width: 768px) {
+  .container-x-padding {
+    padding-left: var(--container-padding-tablet);
+    padding-right: var(--container-padding-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-x-padding {
+    padding-left: var(--container-padding-desktop);
+    padding-right: var(--container-padding-desktop);
+  }
+}
+
+/* Grid layout with responsive gap - for FII cards */
+.fii-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--card-gap-mobile);
+}
+
+@media (min-width: 768px) {
+  .fii-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--card-gap-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  .fii-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--card-gap-desktop);
+  }
+}
+
+/* Button styling with transitions */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--transition-standard);
+}
+
+.btn:hover {
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-secondary);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Input styling */
+.input {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-primary);
+  background-color: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  transition: var(--transition-standard);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-info);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+/* Error state styling */
+.error {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Success state styling */
+.success {
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+/* Loading indicator */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Skeleton loading animation */
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--color-bg-secondary);
+  }
+  50% {
+    background-color: var(--color-bg-tertiary);
+  }
+  100% {
+    background-color: var(--color-bg-secondary);
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1.5s infinite;
+}
+

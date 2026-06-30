@@ -216,3 +216,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Node/npm dependencies and builds
+backend/node_modules/
+frontend/node_modules/
+backend/dist/
+frontend/.next/
+frontend/out/
+*.tsbuildinfo
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+
+node_modules/
