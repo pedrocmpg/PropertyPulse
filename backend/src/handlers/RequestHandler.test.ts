@@ -26,9 +26,19 @@ jest.mock('../utils/Logger', () => ({
   __esModule: true,
   default: {
     debug: jest.fn(),
+    debugData: jest.fn(),
     info: jest.fn(),
+    infoData: jest.fn(),
     warn: jest.fn(),
+    warnData: jest.fn(),
     error: jest.fn(),
+    errorData: jest.fn(),
+    logAPIRequest: jest.fn(),
+    logCacheOperation: jest.fn(),
+    logError: jest.fn(),
+    setLevel: jest.fn(),
+    getLevel: jest.fn(() => 'error'),
+    clearDeduplicationMap: jest.fn(),
   },
 }));
 

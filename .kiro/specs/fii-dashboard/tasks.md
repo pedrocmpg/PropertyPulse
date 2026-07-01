@@ -291,20 +291,20 @@ This implementation follows a structured, testable approach to building a secure
     - Include refresh button in detail view
     - _Requirements: 13.1, 14.2, 14.4_
 
-- [ ] 18. Implement environment configuration
-  - [-] 18.1 Create backend environment configuration
+- [x] 18. Implement environment configuration
+  - [x] 18.1 Create backend environment configuration
     - Load from .env: BRAPI_TOKEN, BRAPI_BASE_URL, BACKEND_PORT, NODE_ENV, LOG_LEVEL, CACHE_TTL_SECONDS, REQUEST_TIMEOUT_MS, MAX_RETRIES
     - Validate required vars on startup; fail if missing
     - Export as singleton config object
     - _Requirements: 1.4, 22.1, 22.2_
 
-  - [-] 18.2 Create frontend environment configuration
+  - [x] 18.2 Create frontend environment configuration
     - Load from .env: REACT_APP_BACKEND_URL, REACT_APP_REFRESH_INTERVAL
     - Use in useFIIData hook for API calls and polling
     - _Requirements: 22.1, 22.2_
 
-- [ ] 19. Add comprehensive logging and monitoring
-  - [ ] 19.1 Create Logger utility for backend
+- [x] 19. Add comprehensive logging and monitoring
+  - [x] 19.1 Create Logger utility for backend
     - Log all API requests: method, path, query, response status, duration
     - Log all cache operations: hit/miss, symbol, TTL
     - Log all errors: code, message, stack trace (debug mode only), context
@@ -312,47 +312,47 @@ This implementation follows a structured, testable approach to building a secure
     - Use configurable log levels (debug, info, warning, error)
     - _Requirements: 1.4, 9.0, 16.1, 16.2_
 
-- [ ] 20. Write integration tests for end-to-end workflows
-  - [ ] 20.1 Test User Story 1: Add FII and View Data
+- [x] 20. Write integration tests for end-to-end workflows
+  - [x] 20.1 Test User Story 1: Add FII and View Data
     - User searches for "MXRF11", backend fetches from brAPI, frontend displays formatted data
     - Verify: All metrics formatted correctly, cache stores entry, subsequent requests use cache
     - _Requirements: 3.1, 3.2, 3.5, 12.5, 14.1, 14.2, 14.3, 14.4_
 
-  - [ ] 20.2 Test User Story 2: Handle Timeout
+  - [x] 20.2 Test User Story 2: Handle Timeout
     - Backend times out (>10s) waiting for brAPI, frontend displays error, user clicks Retry
     - Verify: Error message displays, retry button functions, after 3 failures shows support message
     - _Requirements: 9.1, 9.5, 16.1, 16.2_
 
-  - [ ] 20.3 Test User Story 3: Cache Hit
+  - [x] 20.3 Test User Story 3: Cache Hit
     - User requests "MXRF11" at time T, backend caches result
     - User requests again at T+2 minutes
     - Verify: Backend returns cached result without calling brAPI, data identical
     - _Requirements: 15.1, 15.2, 15.3_
 
-  - [ ] 20.4 Test User Story 4: Cache Expiration
+  - [x] 20.4 Test User Story 4: Cache Expiration
     - User requests "MXRF11" at time T, backend caches for 5 minutes
     - User requests at T+6 minutes
     - Verify: Cache expired, fresh data fetched from brAPI
     - _Requirements: 15.1, 15.3, 15.5_
 
-  - [ ] 20.5 Test User Story 5: Token Security
+  - [x] 20.5 Test User Story 5: Token Security
     - Inspect network traffic using browser DevTools
     - Verify: No API token in frontend requests, no sensitive headers in responses
     - _Requirements: 1.1, 1.2, 1.3, 1.7_
 
-  - [ ] 20.6 Test User Story 6: Responsive Design
+  - [x] 20.6 Test User Story 6: Responsive Design
     - Open dashboard on mobile (320px), tablet (768px), desktop (1200px)
     - Verify: Single-column, 2-column, 3+ column layouts respectively
     - Verify: All components functional and readable on each device
     - _Requirements: 11.5, 11.6, 11.7, 11.8, 19.1, 19.2, 19.3, 19.4, 19.5, 19.6, 19.7, 19.8_
 
-  - [ ] 20.7 Write property test for Cache eviction (LRU)
+  - [x] 20.7 Write property test for Cache eviction (LRU)
     - **Property 9: Cache Eviction**
     - **Validates: Requirement 15.5**
     - Add 500+ cache entries and verify LRU eviction maintains max capacity
     - Minimum 100 iterations
 
-  - [ ] 20.8 Write property test for Cache bypass on refresh
+  - [x] 20.8 Write property test for Cache bypass on refresh
     - **Property 11: Cache Bypass on Refresh**
     - **Validates: Requirement 15.4**
     - Set cache entries, refresh with bypass flag, verify fresh brAPI call made
@@ -366,14 +366,14 @@ This implementation follows a structured, testable approach to building a secure
   - Test concurrent 50 users: no dropped requests
   - Ensure all tests pass, ask the user if questions arise
 
-- [ ] 22. Document system deployment considerations
-  - [ ] 22.1 Document single-instance deployment
+- [-] 22. Document system deployment considerations
+  - [x] 22.1 Document single-instance deployment
     - In-memory cache suitable for single backend instance
     - No cache synchronization needed between instances
     - Suitable for: development, staging, small production deployments (<100k requests/day)
     - _Requirements: 15.1, 15.2_
 
-  - [ ] 22.2 Document distributed deployment scenario
+  - [x] 22.2 Document distributed deployment scenario
     - For multi-instance: migrate to Redis cache for cache sharing between instances
     - Implement cache invalidation across instances using Redis Pub/Sub or cache-control headers
     - Consider sticky sessions or request routing by symbol to reduce cache inconsistency
@@ -381,7 +381,7 @@ This implementation follows a structured, testable approach to building a secure
     - Documentation: how to switch from in-memory to Redis; configuration changes required
     - _Requirements: 15.1, 15.2, 16.1_
 
-  - [ ] 22.3 Create deployment guide
+  - [x] 22.3 Create deployment guide
     - Backend deployment: npm install, npm run build, npm start with BRAPI_TOKEN env var
     - Frontend deployment: npm install, npm run build, REACT_APP_BACKEND_URL pointing to backend proxy
     - Environment setup: .env file template with all required variables
